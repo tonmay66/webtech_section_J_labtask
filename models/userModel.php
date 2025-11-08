@@ -7,7 +7,6 @@ class User {
     }
 
     public function register($username, $email, $password, $role = 'user') {
-        // Plain-text password (NO HASH)
         $stmt = $this->pdo->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
         return $stmt->execute([$username, $email, $password, $role]);
     }

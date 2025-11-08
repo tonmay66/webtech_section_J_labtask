@@ -23,7 +23,6 @@ class ProfileController {
             if (!$username || !$email) {
                 $error = "Please fill all fields correctly.";
                 header('location: ./profile.php');
-                //include DIR . '/../views/profile.php';
                 return;
             }
 

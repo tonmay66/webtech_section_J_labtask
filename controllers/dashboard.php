@@ -1,13 +1,11 @@
 <?php
 session_start();
 
-// Check if the user is not logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
 }
 
-// Include necessary files
 include_once '../models/config.php';
 include_once '../models/userModel.php';
 

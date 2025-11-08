@@ -2,29 +2,23 @@
 session_start();
 require_once '../models/userModel.php';
 
-// Create PDO connection (adjust DB credentials if needed)
 $pdo = new PDO("mysql:host=localhost;dbname=task_management_db", "root", "");
 
-// Instantiate User class with PDO
 $userModel = new User($pdo);
 
-// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-// Get current user data
 $user = $userModel->getUserById($_SESSION['user_id']);
 
-// Handle form submission for profile update
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
 
     if ($userModel->updateProfile($_SESSION['user_id'], $username, $email)) {
         $success = "Profile updated successfully.";
-        // Refresh user data after update
         $user = $userModel->getUserById($_SESSION['user_id']);
     } else {
         $error = "Failed to update profile.";

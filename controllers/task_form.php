@@ -91,7 +91,6 @@ $categories = ['General', 'Work', 'Personal', 'Other'];
 </div>
 
 <script>
-// Bootstrap form validation
 (() => {
   'use strict';
   const forms = document.querySelectorAll('form');
